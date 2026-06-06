@@ -26,7 +26,6 @@ public class Fila {
         }
     }
 
-    // Retorna o NoFila inteiro para podermos pegar o nó e o nível de uma vez só
     public NoFila dequeue() {
         NoFila retornado = null;
         if (!isEmpty()) {

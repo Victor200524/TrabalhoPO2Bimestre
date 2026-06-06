@@ -16,12 +16,12 @@ public class Pilha {
     }
 
     public NoPatricia pop() {
-        NoPatricia noRetornado = null; // Variável para segurar o retorno
+        NoPatricia noRetornado = null;
         if (!isEmpty()) {
             noRetornado = this.topo.getInfo();
             this.topo = this.topo.getProx();
         }
-        return noRetornado; // ÚNICO return no finalzinho
+        return noRetornado;
     }
 
     public NoPatricia peek() {

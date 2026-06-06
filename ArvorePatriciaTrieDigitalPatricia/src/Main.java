@@ -1,32 +1,54 @@
 import arvorePatricia.Patricia;
 
+import java.util.Scanner;
+
 public class Main {
+
+    private static String Menu(){
+        String op;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("=====================================");
+        System.out.println("[A] -> Exibir Palavras Inseridas");
+        System.out.println("[B] -> Exibir Palavras por Nivel");
+        System.out.println("[C] -> Buscar Palavra");
+        System.out.println("[Z] -> Sair");
+        op = String.valueOf(scanner.next().toUpperCase().charAt(0));
+        return op;
+    }
+
     public static void main(String[] args) {
         Patricia arvore = new Patricia();
-
-        // Exatamente como o professor pediu: inserção de dezenas de palavras fixas!
         String[] palavras = {
-                "galo", "sola", "gel", "solo", "sol", // Palavras obrigatórias do exemplo A, B e C
+                "galo", "sola", "gel", "solo", "sol",
                 "abacate", "abacaxi", "banana", "barco", "computador",
                 "computacao", "dados", "dado", "estrutura", "estudar",
                 "faculdade", "faca", "java", "jarra", "zumbi", "zebra"
         };
 
-        System.out.println("--- INSERINDO PALAVRAS ---");
-        for (int i = 0; i < palavras.length; i++) {
+        for (int i = 0; i < palavras.length; i++)
             arvore.inserir(palavras[i]);
-        }
-        System.out.println("Dezenas de palavras inseridas com sucesso!\n");
 
-        System.out.println("--- EXIBINDO PALAVRAS (Ordem Alfabética / Iterativo) ---");
-        arvore.exibirPalavras();
-
-        System.out.println("\n--- BUSCANDO PALAVRAS ---");
-        System.out.println("Busca por 'sol': " + (arvore.buscar("sol") ? "Encontrado" : "Não Encontrado"));
-        System.out.println("Busca por 'gel': " + (arvore.buscar("gel") ? "Encontrado" : "Não Encontrado"));
-        System.out.println("Busca por 'aviao': " + (arvore.buscar("aviao") ? "Encontrado" : "Não Encontrado"));
-
-        System.out.println("\n--- EXIBINDO ÁRVORE NÍVEL A NÍVEL ---");
-        arvore.exibirNivelANivel();
+        System.out.println("Palavras inseridas");
+        String op;
+        do {
+            switch (op = Menu()){
+                case "A":
+                    System.out.println("=== Palavras Inseridas ===");
+                    arvore.exibirPalavras();
+                    break;
+                case "B":
+                    System.out.println("=== Palavras em seu respectivo nivel ===");
+                    arvore.exibirNivelANivel();
+                    break;
+                case "C":
+                    System.out.println("=== Buscar Palavra ===");
+                    String palavra;
+                    System.out.println("Digite a palavra: ");
+                    Scanner scanner = new Scanner(System.in);
+                    palavra = String.valueOf(scanner.nextLine());
+                    System.out.println("Palavra " + palavra + " = " + arvore.buscar(palavra));
+                    break;
+            }
+        }while (!op.equals("Z"));
     }
 }

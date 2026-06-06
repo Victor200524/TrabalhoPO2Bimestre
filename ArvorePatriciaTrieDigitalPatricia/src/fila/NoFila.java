@@ -4,7 +4,7 @@ import arvorePatricia.NoPatricia;
 
 public class NoFila {
     private NoPatricia info;
-    private int nivel; // Já guardamos o nível diretamente aqui!
+    private int nivel;
     private NoFila prox;
 
     public NoFila(NoPatricia info, int nivel) {
